@@ -1,0 +1,180 @@
+import React, { useContext, useState } from "react";
+import { clientsContext } from "../contexts/clientsContext";
+import Select from "react-select";
+
+import "../styles/styleList.css";
+
+export const ClientList = () => {
+  const { clients, setClients, products, setProducts } =
+    useContext(clientsContext);
+  const options = [
+    { value: "Pendiente", label: "Pendiente", color: "yellow" },
+    { value: "Pago", label: "Pago", color: "green" },
+    { value: "Entregado", label: "Entregado", color: "blue" },
+  ];
+
+  const [productName, setProductName] = useState(null);
+  const [productColor, setProductColor] = useState(null);
+  const [productPrice, setProductPrice] = useState(null);
+  const [productId, setProductId] = useState(null);
+
+  const [selectedClient, setSelectedClient] = useState({
+    name: "",
+    amount: 0,
+    status: "",
+    productsIds: [0, 0],
+  });
+
+  const newProduct = (e) => {
+    e.preventDefault();
+    setProducts((prev) => [
+      ...prev,
+      {
+        id: productId,
+        value: productName,
+        label: productName,
+        product: productName,
+        price: parseInt(productPrice),
+        color: productColor,
+      },
+    ]);
+  };
+
+  const addProduct = (e) => {
+    setClients((prev) =>
+      prev.map((client) =>
+        client.name === selectedClient.name
+          ? {
+              ...client,
+              productsIds: [
+                ...client.productsIds,
+                products.find((product) => product.value === e.value)?.id,
+              ],
+            }
+          : client
+      )
+    );
+    updateAmountClients();
+    console.log(clients);
+  };
+
+  const updateAmountClients = () => {
+    setClients((prevClients) =>
+      prevClients.map((client) => {
+        // calcular el total de productos del cliente
+        const totalProducts = client.productsIds?.reduce((sum, id) => {
+          const product = products.find((p) => p.id === id);
+          return sum + (product?.price || 0);
+        }, 0);
+
+        // devolver el cliente actualizado
+        return { ...client, amount: totalProducts };
+      })
+    );
+  };
+  const handleChange = (query, selectedOption) => {
+    setClients((prev) =>
+      prev.map(
+        (client) =>
+          client.name === query.name
+            ? { ...client, status: selectedOption.value } // actualiza solo el cliente que coincide
+            : client // deja los demás igual
+      )
+    );
+    console.log(clients);
+  };
+
+  const setSelected = (query) => {
+    setSelectedClient(query);
+  };
+
+  return (
+    <div>
+      <form onSubmit={(e) => newProduct(e)}>
+        <input
+          type="text"
+          placeholder="Id del Producto"
+          onChange={(e) => setProductId(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Nombre del Producto"
+          onChange={(e) => setProductName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Precio"
+          onChange={(e) => setProductPrice(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Color"
+          onChange={(e) => setProductColor(e.target.value)}
+        />
+        <button type="submit">Agregar...</button>
+      </form>
+      <div style={{ display: "flex" }}>
+        <div className="client-info">
+          <h2>Editar Cliente</h2>
+          <div className="client-info-text">
+            <p>Nombre: {selectedClient.name}</p>
+            <p>Monto: {selectedClient.amount}</p>
+            <p>Estado: {selectedClient.status}</p>
+          </div>
+          <div className="products-list">
+            <Select
+              styles={{
+                control: (base) => ({
+                  ...base,
+                  width: "100%",
+                  borderColor: "#00bfff",
+                }),
+              }}
+              options={products}
+              value={null}
+              onChange={(e) => addProduct(e)}
+              placeholder={"Agregar Producto"}
+            />
+            <ul>
+              {selectedClient.productsIds.map((id) => {
+                return products.map((product) => {
+                  return id === product.id ? (
+                    <li key={product.id}>
+                      <p>{product.id}</p> <p>{product.product}</p>
+                      <p> {product.color}</p>
+                    </li>
+                  ) : null;
+                });
+              })}
+            </ul>
+          </div>
+        </div>
+        <ul className="client-list">
+          {clients.map((client) => {
+            return (
+              <li className="client-item" onClick={() => setSelected(client)}>
+                <p className="item-name">{client.name}</p>
+                <div className="item-right">
+                  <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        width: "10rem",
+                        borderColor: "#00bfff",
+                      }),
+                    }}
+                    options={options}
+                    value={null}
+                    onChange={(e) => handleChange(client, e)}
+                    placeholder={`${client.status ? client.status : ""}`}
+                  />
+                  <p className="item-amount">$ {client.amount}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+};
