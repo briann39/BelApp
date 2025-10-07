@@ -113,7 +113,7 @@ export const ClientList = () => {
         />
         <button type="submit">Agregar...</button>
       </form>
-      <div style={{ display: "flex" }}>
+      <div className="">
         <div className="client-info">
           <h2>Editar Cliente</h2>
           <div className="client-info-text">
