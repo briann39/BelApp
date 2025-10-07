@@ -3,19 +3,36 @@
   width: 100%;
   height: 100vh;
   padding: 1rem;
-  background-color: var(--pink-light);
+  background-color: var(--pink-600);
 }
 :root {
-  --pink-light: #f9c6d0;
-  --pink: #e96b8c;
-  --pink-dark: #d6336c;
+  /* Tonos principales */
+  --pink-50: #fff0f5;
+  --pink-100: #ffd6e0;
+  --pink-200: #ffadc2;
+  --pink-300: #ff85a3;
+  --pink-400: #ff5c85;
+  --pink-500: #ff3366;
+  --pink-600: #e0295a;
+  --pink-700: #b81f4a;
+  --pink-800: #8f153a;
+  --pink-900: #660b2a;
 
-  --aqua-light: #a0e7e5;
-  --aqua: #5fd9c1;
-  --aqua-dark: #3bae9c;
+  /* Complementarios */
+  --white: #ffffff;
+  --gray-light: #f7f7f7;
+  --gray: #999999;
+  --gray-dark: #333333;
 
-  --white-soft: #fdfefe;
-  --gray-soft: #6b6b6b;
+  /* Bordes */
+  --border-light: #ffd6e0;
+  --border: #ff85a3;
+  --border-dark: #b81f4a;
+
+  /* Sombras */
+  --shadow-light: rgba(255, 133, 163, 0.25);
+  --shadow-medium: rgba(184, 31, 74, 0.35);
+  --shadow-dark: rgba(102, 11, 42, 0.45);
 }
 
 /* index.css */

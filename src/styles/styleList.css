@@ -1,6 +1,6 @@
 .client-list {
-  border: solid 1px var(--pink-dark);
-  background-color: var(--aqua);
+  border: solid 1px var(--border);
+  background-color: var(--pink-100);
   width: 100%;
   box-sizing: border-box;
   margin: 1rem;
