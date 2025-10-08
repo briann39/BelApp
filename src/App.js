@@ -2,14 +2,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import { ClientList } from "./components/clientList";
 import { ClientProvider } from "./contexts/clientsContext";
-import { CreateClient } from "./components/addClient";
+import { useState } from "react";
+import { HomePage } from "./components/home/home.jsx";
 
 function App() {
   return (
     <ClientProvider>
       <div className="App">
-        <CreateClient />
-        <ClientList />
+        <HomePage />
       </div>
     </ClientProvider>
   );

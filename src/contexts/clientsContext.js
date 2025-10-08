@@ -25,6 +25,10 @@ export const ClientProvider = ({ children }) => {
       price: 180,
       color: "green",
     },
+    {
+      value: "Add",
+      label: "Agregar Producto...",
+    },
   ]);
 
   useEffect(() => {

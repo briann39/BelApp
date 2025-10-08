@@ -1,38 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 .App {
   text-align: center;
   width: 100%;
   height: 100vh;
   padding: 1rem;
-  background-color: var(--pink-600);
+  background-color: var(--color-background);
 }
 :root {
-  /* Tonos principales */
-  --pink-50: #fff0f5;
-  --pink-100: #ffd6e0;
-  --pink-200: #ffadc2;
-  --pink-300: #ff85a3;
-  --pink-400: #ff5c85;
-  --pink-500: #ff3366;
-  --pink-600: #e0295a;
-  --pink-700: #b81f4a;
-  --pink-800: #8f153a;
-  --pink-900: #660b2a;
+  /* 🎨 Base */
+  --color-background: #e6e6e6;
+  --color-surface: #f7f6f4;
+  --color-dark: #1e172b;
+  --color-text-dark: #4a4a4a;
 
-  /* Complementarios */
-  --white: #ffffff;
-  --gray-light: #f7f7f7;
-  --gray: #999999;
-  --gray-dark: #333333;
+  /* 💜 Tonos principales */
+  --color-purple-light: #bbb3cb;
+  --color-purple-hover: #8871b6;
 
-  /* Bordes */
-  --border-light: #ffd6e0;
-  --border: #ff85a3;
-  --border-dark: #b81f4a;
+  --color-purple-dark: #574871;
+  --color-rose-soft: #d8a4a9;
+  --color-rose-hover: #a37c80;
 
-  /* Sombras */
-  --shadow-light: rgba(255, 133, 163, 0.25);
-  --shadow-medium: rgba(184, 31, 74, 0.35);
-  --shadow-dark: rgba(102, 11, 42, 0.45);
+  --color-green-mint: #9dcbc9;
+  --color-green-hover: #47c7c1;
+  --color-green-dark: #195e53;
+  --color-brown-dark: #6a4b5b;
+  --color-brown-hover: #4d3742;
+
+  /* 🌼 Acentos */
+  --color-yellow-mustard: #e5a54a;
+  --color-beige: #f2e9da;
+
+  /* Fuentes */
+  --font-poppins: "Poppins", sans-serif;
+
+  /* 🧩 Extra */
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-border: rgba(0, 0, 0, 0.08);
 }
 
 /* index.css */
@@ -40,39 +45,4 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

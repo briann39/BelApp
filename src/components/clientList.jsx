@@ -17,6 +17,7 @@ export const ClientList = () => {
   const [productColor, setProductColor] = useState(null);
   const [productPrice, setProductPrice] = useState(null);
   const [productId, setProductId] = useState(null);
+  const [showAddProduct, setShowAddProduct] = useState(false);
 
   const [selectedClient, setSelectedClient] = useState({
     name: "",
@@ -25,19 +26,50 @@ export const ClientList = () => {
     productsIds: [0, 0],
   });
 
+  const [option, setOption] = useState(null);
+
+  const [nameClient, setNameClient] = useState(null);
+  const [showAddClient, setShowAddClient] = useState(false);
+
+  const addClient = (e) => {
+    e.preventDefault();
+    if (nameClient.trim() !== "") {
+      const client = [
+        ...clients,
+        { name: nameClient, amount: 0, status: "pendient", productsIds: [] },
+      ];
+
+      setClients(client);
+      setNameClient("");
+      setShowAddClient(false);
+    }
+  };
+
+  const handleOption = (query) => {
+    setOption(query);
+    console.log("a");
+  };
+
   const newProduct = (e) => {
     e.preventDefault();
-    setProducts((prev) => [
-      ...prev,
-      {
-        id: productId,
-        value: productName,
-        label: productName,
-        product: productName,
-        price: parseInt(productPrice),
-        color: productColor,
-      },
-    ]);
+    if (
+      productName.trim() !== "" &&
+      productColor !== "" &&
+      productPrice !== ""
+    ) {
+      setProducts((prev) => [
+        ...prev,
+        {
+          id: productId,
+          value: productName,
+          label: productName,
+          product: productName,
+          price: parseInt(productPrice),
+          color: productColor,
+        },
+      ]);
+      setShowAddProduct(false);
+    }
   };
 
   const addProduct = (e) => {
@@ -86,35 +118,43 @@ export const ClientList = () => {
 
   const setSelected = (query) => {
     setSelectedClient(query);
+    setOption("info");
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => newProduct(e)}>
-        <input
-          type="text"
-          placeholder="Id del Producto"
-          onChange={(e) => setProductId(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Nombre del Producto"
-          onChange={(e) => setProductName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Precio"
-          onChange={(e) => setProductPrice(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Color"
-          onChange={(e) => setProductColor(e.target.value)}
-        />
-        <button type="submit">Agregar...</button>
-      </form>
-      <div className="">
-        <div className="client-info">
+    <div style={{ position: "relative" }}>
+      <div className="app-container">
+        <form
+          style={{ display: `${!showAddProduct ? "none" : ""}` }}
+          className="form-add-product"
+          onSubmit={(e) => newProduct(e)}
+        >
+          <input
+            type="text"
+            placeholder="Id del Producto"
+            onChange={(e) => setProductId(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Nombre del Producto"
+            onChange={(e) => setProductName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Precio"
+            onChange={(e) => setProductPrice(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Color"
+            onChange={(e) => setProductColor(e.target.value)}
+          />
+          <button type="submit">Agregar...</button>
+        </form>
+        <div
+          style={{ display: `${option !== "info" ? "none" : ""}` }}
+          className="client-info"
+        >
           <h2>Editar Cliente</h2>
           <div className="client-info-text">
             <p>Nombre: {selectedClient.name}</p>
@@ -132,7 +172,15 @@ export const ClientList = () => {
               }}
               options={products}
               value={null}
-              onChange={(e) => addProduct(e)}
+              onChange={(e) => {
+                {
+                  if (e.value === "Add") {
+                    setShowAddProduct(true);
+                  } else {
+                    addProduct(e);
+                  }
+                }
+              }}
               placeholder={"Agregar Producto"}
             />
             <ul>
@@ -149,7 +197,13 @@ export const ClientList = () => {
             </ul>
           </div>
         </div>
-        <ul className="client-list">
+        <ul
+          style={{ display: `${option !== "list" ? "none" : ""}` }}
+          className="client-list"
+        >
+          <button onClick={() => setShowAddClient(true)}>
+            Agregar Cliente
+          </button>
           {clients.map((client) => {
             return (
               <li className="client-item" onClick={() => setSelected(client)}>
@@ -174,6 +228,24 @@ export const ClientList = () => {
             );
           })}
         </ul>
+      </div>
+      <div className="menu-container">
+        <button onClick={() => handleOption("list")}>list</button>
+        <button onClick={() => handleOption("info")}>Info</button>
+      </div>
+      <div
+        style={{ display: `${!showAddClient ? "none" : ""}` }}
+        className="form-add-client"
+      >
+        <form onSubmit={(e) => addClient(e)}>
+          <input
+            type="text"
+            placeholder="Nombre..."
+            value={nameClient}
+            onChange={(e) => setNameClient(e.target.value)}
+          />
+          <button type="submit">Agregar</button>
+        </form>
       </div>
     </div>
   );

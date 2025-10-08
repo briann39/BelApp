@@ -1,3 +1,11 @@
+.app-container {
+  display: flex;
+  position: relative;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .client-list {
   border: solid 1px var(--border);
   background-color: var(--pink-100);
@@ -21,7 +29,8 @@
   border: solid 1px var(--border);
   transition: background-color 0.3s ease;
   cursor: pointer;
-  color: var(--border-dark);
+  background-color: var(--pink-600);
+  color: var(--border-light);
   font-weight: bold;
 }
 
@@ -50,6 +59,10 @@
 
 .client-info {
   width: 100%;
+  background-color: var(--pink-100);
+  border: solid 1px var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
 
 .client-info-text {
@@ -63,6 +76,7 @@
   padding: 0;
   list-style: none;
   height: 20rem;
+
   max-height: 20rem;
   overflow: auto;
 }
@@ -73,10 +87,34 @@
   border-radius: 0.5rem;
   align-items: center;
   justify-content: space-around;
+  background-color: var(--pink-600);
+  border: solid 1px var(--border);
+  color: var(--pink-100);
+  font-weight: bold;
 }
 
+.form-add-client {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 5rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  padding: 1rem;
+  background-color: var(--pink-800);
+}
+
+.form-add-product {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 5rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  padding: 1rem;
+  background-color: var(--pink-800);
+}
 @media (max-width: 600px) {
-  .client-info {
-    display: none;
-  }
 }
