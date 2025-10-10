@@ -22,6 +22,17 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.596);
 }
 
+.form-add-client-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50rem;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
 .form-add-client {
   background-color: var(--color-rose-soft);
   max-width: 25rem;
@@ -30,12 +41,11 @@
   align-items: center;
   flex-direction: column;
   padding: 1.5rem;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   z-index: 99999;
   width: 90%;
-  transform: translate(-50%, -50%);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.596);
 }
 
