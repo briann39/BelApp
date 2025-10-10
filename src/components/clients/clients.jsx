@@ -151,6 +151,28 @@ export const ClientsPage = () => {
                       ...base,
                       color: "black",
                     }),
+                    menu: (provided) => ({
+                      ...provided,
+                      backgroundColor: "#ffffff", // color del menú
+                      borderRadius: "1rem",
+                      width: "10rem",
+                      textAlign: "left",
+                      padding: "0.5rem",
+                      left: "-75px",
+                      boxShadow: "0 0 10px rgba(0,0,0,0.2)",
+                    }),
+                    option: (provided, state) => ({
+                      ...provided,
+                      backgroundColor: state.isSelected
+                        ? "#ff99cc" // cuando está seleccionado
+                        : state.isFocused
+                        ? "#ffd6eb" // cuando se pasa el mouse
+                        : "#fff", // por defecto
+                      color: "#333",
+                      padding: "10px 15px",
+                      cursor: "pointer",
+                      borderRadius: "1rem",
+                    }),
                   }}
                   components={{
                     Control: CustomControl,
