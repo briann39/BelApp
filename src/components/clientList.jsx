@@ -12,12 +12,7 @@ export const ClientList = () => {
     { value: "Pago", label: "Pago", color: "green" },
     { value: "Entregado", label: "Entregado", color: "blue" },
   ];
-
-  const [productName, setProductName] = useState(null);
-  const [productColor, setProductColor] = useState(null);
-  const [productPrice, setProductPrice] = useState(null);
-  const [productId, setProductId] = useState(null);
-  const [showAddProduct, setShowAddProduct] = useState(false);
+  const [option, setOption] = useState(null);
 
   const [selectedClient, setSelectedClient] = useState({
     name: "",
@@ -25,11 +20,15 @@ export const ClientList = () => {
     status: "",
     productsIds: [0, 0],
   });
+  const [showAddClient, setShowAddClient] = useState(false);
 
-  const [option, setOption] = useState(null);
+  const [productName, setProductName] = useState(null);
+  const [productColor, setProductColor] = useState(null);
+  const [productPrice, setProductPrice] = useState(null);
+  const [productId, setProductId] = useState(null);
+  const [showAddProduct, setShowAddProduct] = useState(false);
 
   const [nameClient, setNameClient] = useState(null);
-  const [showAddClient, setShowAddClient] = useState(false);
 
   const addClient = (e) => {
     e.preventDefault();

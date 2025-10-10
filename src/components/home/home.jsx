@@ -3,21 +3,21 @@ import clientsIcono from "../../assets/iconsButtons/clientes-icon-button.svg";
 import productsIcono from "../../assets/iconsButtons/products-icon-button.svg";
 import campaignIcono from "../../assets/iconsButtons/campaign-icon-button.svg";
 import configurationIcono from "../../assets/iconsButtons/configuration-icon-button.svg";
+import { useNavigate } from "react-router-dom";
 
 import "./homeStyle.css";
+import { NavBar } from "../navbar/navBar";
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <div className="home-page-container">
-      <div className="nav-bar-top">
-        <img
-          className="home-perfil-img"
-          src="https://i.pinimg.com/736x/9f/2e/3f/9f2e3f8dd79fb6008e93a781ba1df009.jpg"
-          alt=""
-        />
-      </div>
+      <NavBar />
       <div className="home-buttons-container">
-        <button className="button-home btn-clients">
+        <button
+          onClick={() => navigate("/clients")}
+          className="button-home btn-clients"
+        >
           <img
             className="img-icon-home-button"
             src={clientsIcono}

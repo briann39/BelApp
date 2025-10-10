@@ -4,8 +4,14 @@ export const clientsContext = createContext();
 
 export const ClientProvider = ({ children }) => {
   const [clients, setClients] = useState([
-    { name: "Naty", amount: 500, status: "Pendient", productsIds: [1, 2] },
-    { name: "Rocio", amount: 500, status: "Pendient", productsIds: [2] },
+    {
+      id: 1,
+      name: "Nat",
+      amount: 500,
+      status: "pend",
+      productsIds: [1, 2],
+    },
+    { id: 2, name: "io", amount: 500, status: "pend", productsIds: [2] },
   ]);
 
   const [products, setProducts] = useState([
