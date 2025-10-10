@@ -89,6 +89,12 @@ export const ClientsPage = () => {
         className="form-add-client"
       >
         <h2>Agregar nuevo cliente</h2>
+        <button
+          className="button-close-add-client"
+          onClick={() => setShowAddClient(false)}
+        >
+          X
+        </button>
         <form className="form-box" onSubmit={(e) => addClient(e)}>
           <label htmlFor="">Nombre del cliente:</label>
           <input
@@ -111,7 +117,9 @@ export const ClientsPage = () => {
             value={directionClient}
             onChange={(e) => setDirectionClient(e.target.value)}
           />
-          <button type="submit">Agregar</button>
+          <button className="button-add" type="submit">
+            Agregar
+          </button>
         </form>
       </div>
       <div className="header-clients">
@@ -183,6 +191,7 @@ export const ClientsPage = () => {
                   }}
                   options={options}
                   isSearchable={false}
+                  menuPlacement="auto"
                   value={null}
                   onChange={(e) => handleChange(client, e)}
                   placeholder={`${client.status ? client.status : ""}`}
