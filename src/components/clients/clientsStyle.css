@@ -13,8 +13,11 @@
   border: solid 2px var(--color-brown-dark);
   border-radius: 1rem;
   flex: 1;
+  max-height: 77vh;
   width: 100%;
   list-style: none;
+  margin-top: 1rem;
+  overflow: auto;
 }
 
 .form-add-client {
@@ -95,7 +98,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  flex: 1;
 }
 
 .button-addclient {
@@ -163,8 +165,10 @@
 .client-item p {
   font-size: 0.75rem;
   width: 6rem;
-  overflow: hidden;
   text-align: left;
+  white-space: nowrap; /* no permite saltos de línea */
+  overflow: hidden; /* oculta lo que se pasa */
+  text-overflow: ellipsis; /* opcional: agrega "..." si se corta */
 }
 
 .client-item .column-id {
@@ -224,7 +228,6 @@
 .client-button-back-container {
   width: 100%;
   display: flex;
-  margin-top: 0.5rem;
   align-items: center;
   justify-content: flex-start;
 }

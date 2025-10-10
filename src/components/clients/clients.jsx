@@ -151,6 +151,7 @@ export const ClientsPage = () => {
                     placeholder: (base) => ({
                       ...base,
                       color: "black",
+                      fontSize: "0.75rem",
                     }),
                     menu: (provided) => ({
                       ...provided,
