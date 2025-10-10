@@ -90,18 +90,21 @@ export const ClientsPage = () => {
       >
         <h2>Agregar nuevo cliente</h2>
         <form className="form-box" onSubmit={(e) => addClient(e)}>
+          <label htmlFor="">Nombre del cliente:</label>
           <input
             type="text"
             placeholder="Nombre del cliente"
             value={nameClient}
             onChange={(e) => setNameClient(e.target.value)}
           />
+          <label htmlFor="">Telefono:</label>
           <input
             type="text"
             placeholder="Numero de telefono"
             value={phoneClient}
             onChange={(e) => setPhoneClient(e.target.value)}
           />
+          <label htmlFor="">Direccion:</label>
           <input
             type="text"
             placeholder="Direccion"
@@ -111,7 +114,6 @@ export const ClientsPage = () => {
           <button type="submit">Agregar</button>
         </form>
       </div>
-      <NavBar />
       <div className="header-clients">
         <h2>Clientes</h2>
         <button
@@ -145,7 +147,6 @@ export const ClientsPage = () => {
                       ...base,
                       backgroundColor: "transparent", // ❌ elimina el fondo gris/blanco
                       border: "none", // ❌ elimina el borde
-                      boxShadow: "none", // ❌ elimina el efecto de foco
                     }),
                     placeholder: (base) => ({
                       ...base,

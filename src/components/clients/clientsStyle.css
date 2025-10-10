@@ -52,6 +52,15 @@
   border-radius: 999rem;
   width: 100%;
   border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: var(--color-brown-dark);
+}
+
+.form-box label {
+  font-family: var(--font-poppins);
+  width: 100%;
+  text-align: left;
+  color: var(--color-brown-dark);
 }
 
 .form-box button {
@@ -61,6 +70,10 @@
   color: var(--color-green-dark);
   border: none;
   border-radius: 999rem;
+  font-weight: bold;
+  font-family: var(--font-poppins);
+  margin-top: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header-clients {
@@ -94,6 +107,7 @@
   color: var(--color-purple-dark);
   transition: transform 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .button-addclient:hover {
@@ -115,6 +129,7 @@
   font-family: var(--font-poppins);
   border-radius: 999rem;
   padding: 0 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .clients-data-columns p {
@@ -175,8 +190,8 @@
   justify-content: center;
   font-family: var(--font-poppins);
   font-weight: normal;
-
   border-radius: 999rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .select-client-status p {
@@ -226,6 +241,7 @@
   color: var(--color-green-dark);
   transition: transform 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .client-button-back:hover {
