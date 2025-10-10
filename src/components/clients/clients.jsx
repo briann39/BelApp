@@ -22,7 +22,7 @@ export const ClientsPage = () => {
   ];
   const [option, setOption] = useState(null);
 
-  const [nameClient, setNameClient] = useState(null);
+  const [nameClient, setNameClient] = useState("");
   const [phoneClient, setPhoneClient] = useState(null);
   const [directionClient, setDirectionClient] = useState(null);
 
@@ -97,6 +97,7 @@ export const ClientsPage = () => {
               animate={{ opacity: 0.8 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
+              onClick={() => setShowAddClient(false)}
             />
             <motion.div
               key="add-client"

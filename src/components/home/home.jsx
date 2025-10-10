@@ -1,54 +1,58 @@
-import React from "react";
-import clientsIcono from "../../assets/iconsButtons/clientes-icon-button.svg";
-import productsIcono from "../../assets/iconsButtons/products-icon-button.svg";
-import campaignIcono from "../../assets/iconsButtons/campaign-icon-button.svg";
-import configurationIcono from "../../assets/iconsButtons/configuration-icon-button.svg";
+import React, { useContext, useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import "./homeStyle.css";
 import { NavBar } from "../navbar/navBar";
+import { clientsContext } from "../../contexts/clientsContext";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 export const HomePage = () => {
+  const [amountTotal, setAmountTotal] = useState(0);
+  const { clients, setClients, products, setProducts } =
+    useContext(clientsContext);
+
+  useEffect(() => {
+    const total = clients.reduce((acumulador, client) => {
+      return acumulador + client.amount; // sumamos el amount de cada cliente
+    }, 0);
+
+    setAmountTotal(total);
+  }, [clients]);
+
   const navigate = useNavigate();
   return (
     <div className="home-page-container">
-      <NavBar />
-      <div className="home-buttons-container">
+      <div className="top-contain">
+        <NavBar />
+
+        <div className="stats-container">
+          <div className="stats-item">
+            <label htmlFor="">Ganancias:</label>
+            <p>$900</p>
+          </div>
+          <div className="stats-item">
+            <label htmlFor="">A Pagar:</label>
+            <p>$99000</p>
+          </div>
+        </div>
+        <div className="amount-total-container">
+          <label>Total ventas:</label>
+          <h3>${amountTotal}</h3>
+        </div>
+      </div>
+      <div className="buttons-container">
         <button
           onClick={() => navigate("/clients")}
-          className="button-home btn-clients"
+          className="button-navigate button-active "
         >
-          <img
-            className="img-icon-home-button"
-            src={clientsIcono}
-            alt="Icon-clients"
-          />
-          <p>CLIENTES</p>
+          <FontAwesomeIcon icon={faUsers} />
         </button>
-        <button className="button-home btn-products">
-          <img
-            className="img-icon-home-button"
-            src={productsIcono}
-            alt="Icon-clients"
-          />
-          <p>PRODUCTOS</p>
-        </button>
-        <button className="button-home btn-campaign">
-          <img
-            className="img-icon-home-button"
-            src={campaignIcono}
-            alt="Icon-clients"
-          />
-          <p>CAMPAÑAS</p>
-        </button>
-        <button className="button-home btn-configuration">
-          <img
-            className="img-icon-home-button"
-            src={configurationIcono}
-            alt="Icon-clients"
-          />
-          <p>CONFIGURACION</p>
-        </button>
+        <div className="button-navigate"></div>
+        <div className="button-navigate"></div>
+        <div className="button-navigate"></div>
       </div>
     </div>
   );

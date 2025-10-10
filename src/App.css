@@ -1,15 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Quicksand:wght@400;600&family=Rubik:wght@400;500;700&family=Nunito:wght@400;600&display=swap");
+
 .App {
   text-align: center;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   padding: 1rem;
-  background-image: url("./assets/backgrounds/background-mobile.svg");
+  background-color: #001220;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 :root {
   /* 🎨 Base */
   --color-background: #e6e6e6;
@@ -21,13 +24,15 @@
   --color-purple-light: #bbb3cb;
   --color-purple-hover: #8871b6;
 
+  --color-azul-dark: #001220;
+
   --color-purple-dark: #574871;
   --color-rose-soft: #d8a4a9;
   --color-rose-hover: #a37c80;
 
   --color-green-mint: #9dcbc9;
   --color-green-hover: #47c7c1;
-  --color-green-dark: #195e53;
+  --color-green-dark: #084847;
   --color-brown-dark: #6a4b5b;
   --color-brown-hover: #4d3742;
 
