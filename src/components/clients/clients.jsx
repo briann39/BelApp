@@ -69,6 +69,7 @@ export const ClientsPage = () => {
           id: clients.length + 1,
           name: nameClient,
           phone: phoneClient,
+          direction: directionClient,
           amount: 0,
           status: "pend",
           productsIds: [],
@@ -120,52 +121,58 @@ export const ClientsPage = () => {
           Agregar Cliente
         </button>
       </div>
-      <ul className="clients-list">
-        <li className="clients-data-columns">
-          <p className="column-id">ID</p>
-          <p>NOMBRE</p>
-          <p>PRODUCTOS</p>
-          <p>MONTO</p>
-          <p>ESTADO</p>
-        </li>
+      <div className="app-body">
+        <ul className="clients-list">
+          <li className="clients-data-columns">
+            <p className="column-id">ID</p>
+            <p>NOMBRE</p>
+            <p>PRODUCTOS</p>
+            <p>MONTO</p>
+            <p>ESTADO</p>
+          </li>
 
-        {clients.map((client) => {
-          return (
-            <li className="client-item" onClick={() => setSelected(client)}>
-              <p className="column-id">{client.id}</p>
-              <p>{client.name}</p>
-              <p>{client.productsIds.length}</p>
+          {clients.map((client) => {
+            return (
+              <li className="client-item" onClick={() => setSelected(client)}>
+                <p className="column-id">{client.id}</p>
+                <p>{client.name}</p>
+                <p>{client.productsIds.length}</p>
 
-              <p>$ {client.amount}</p>
-              <Select
-                styles={{
-                  control: (base) => ({
-                    ...base,
-                    backgroundColor: "transparent", // ❌ elimina el fondo gris/blanco
-                    border: "none", // ❌ elimina el borde
-                    boxShadow: "none", // ❌ elimina el efecto de foco
-                  }),
-                  placeholder: (base) => ({
-                    ...base,
-                    color: "black",
-                  }),
-                }}
-                components={{
-                  Control: CustomControl,
-                  DropdownIndicator: () => null,
-                  IndicatorSeparator: () => null,
-                }}
-                options={options}
-                isSearchable={false}
-                value={null}
-                onChange={(e) => handleChange(client, e)}
-                placeholder={`${client.status ? client.status : ""}`}
-              />
-            </li>
-          );
-        })}
-      </ul>
-      <button onClick={() => navigate("/")}>volver</button>
+                <p>$ {client.amount}</p>
+                <Select
+                  styles={{
+                    control: (base) => ({
+                      ...base,
+                      backgroundColor: "transparent", // ❌ elimina el fondo gris/blanco
+                      border: "none", // ❌ elimina el borde
+                      boxShadow: "none", // ❌ elimina el efecto de foco
+                    }),
+                    placeholder: (base) => ({
+                      ...base,
+                      color: "black",
+                    }),
+                  }}
+                  components={{
+                    Control: CustomControl,
+                    DropdownIndicator: () => null,
+                    IndicatorSeparator: () => null,
+                  }}
+                  options={options}
+                  isSearchable={false}
+                  value={null}
+                  onChange={(e) => handleChange(client, e)}
+                  placeholder={`${client.status ? client.status : ""}`}
+                />
+              </li>
+            );
+          })}
+        </ul>
+        <div className="client-button-back-container">
+          <button className="client-button-back" onClick={() => navigate("/")}>
+            Volver
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
