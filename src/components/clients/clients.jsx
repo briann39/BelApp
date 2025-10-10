@@ -19,6 +19,8 @@ export const ClientsPage = () => {
   const [option, setOption] = useState(null);
 
   const [nameClient, setNameClient] = useState(null);
+  const [phoneClient, setPhoneClient] = useState(null);
+  const [directionClient, setDirectionClient] = useState(null);
 
   const [selectedClient, setSelectedClient] = useState({
     name: "",
@@ -66,6 +68,7 @@ export const ClientsPage = () => {
         {
           id: clients.length + 1,
           name: nameClient,
+          phone: phoneClient,
           amount: 0,
           status: "pend",
           productsIds: [],
@@ -84,12 +87,25 @@ export const ClientsPage = () => {
         style={{ display: `${!showAddClient ? "none" : ""}` }}
         className="form-add-client"
       >
-        <form onSubmit={(e) => addClient(e)}>
+        <h2>Agregar nuevo cliente</h2>
+        <form className="form-box" onSubmit={(e) => addClient(e)}>
           <input
             type="text"
-            placeholder="Nombre..."
+            placeholder="Nombre del cliente"
             value={nameClient}
             onChange={(e) => setNameClient(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Numero de telefono"
+            value={phoneClient}
+            onChange={(e) => setPhoneClient(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Direccion"
+            value={directionClient}
+            onChange={(e) => setDirectionClient(e.target.value)}
           />
           <button type="submit">Agregar</button>
         </form>
