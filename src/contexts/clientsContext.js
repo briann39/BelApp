@@ -3,16 +3,10 @@ import { createContext, useEffect, useState } from "react";
 export const clientsContext = createContext();
 
 export const ClientProvider = ({ children }) => {
-  const [clients, setClients] = useState([
-    {
-      id: 1,
-      name: "Nat",
-      amount: 500,
-      status: "pend",
-      productsIds: [1, 2],
-    },
-    { id: 2, name: "io", amount: 500, status: "pend", productsIds: [2] },
-  ]);
+  const [clients, setClients] = useState(() => {
+    const saved = localStorage.getItem("clients");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const [products, setProducts] = useState([
     {
@@ -49,6 +43,17 @@ export const ClientProvider = ({ children }) => {
       })
     );
   }, [products]);
+
+  useEffect(() => {
+    const savedClients = localStorage.getItem("clients");
+    if (savedClients) {
+      setClients(JSON.parse(savedClients));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("clients", JSON.stringify(clients));
+  }, [clients]);
 
   return (
     <clientsContext.Provider

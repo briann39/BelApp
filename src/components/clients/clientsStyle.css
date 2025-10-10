@@ -19,10 +19,12 @@
   list-style: none;
   margin-top: 1rem;
   overflow: auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.596);
 }
 
 .form-add-client {
   background-color: var(--color-rose-soft);
+  max-width: 25rem;
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -260,6 +262,17 @@
 
 .ent .select-client-status-icon {
   background-color: #4caf50;
+}
+
+.not-results-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  font-family: var(--font-poppins);
+  color: var(--color-brown-dark);
 }
 
 .client-button-back-container {

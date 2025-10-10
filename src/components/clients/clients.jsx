@@ -140,65 +140,68 @@ export const ClientsPage = () => {
             <p>MONTO</p>
             <p>ESTADO</p>
           </li>
+          {clients.length !== 0 ? (
+            clients.map((client) => {
+              return (
+                <li className="client-item" onClick={() => setSelected(client)}>
+                  <p className="column-id">{client.id}</p>
+                  <p>{client.name}</p>
+                  <p>{client.productsIds.length}</p>
 
-          {clients.map((client) => {
-            return (
-              <li className="client-item" onClick={() => setSelected(client)}>
-                <p className="column-id">{client.id}</p>
-                <p>{client.name}</p>
-                <p>{client.productsIds.length}</p>
-
-                <p>$ {client.amount}</p>
-                <Select
-                  styles={{
-                    control: (base) => ({
-                      ...base,
-                      backgroundColor: "transparent", // ❌ elimina el fondo gris/blanco
-                      border: "none", // ❌ elimina el borde
-                    }),
-                    placeholder: (base) => ({
-                      ...base,
-                      color: "black",
-                      fontSize: "0.75rem",
-                    }),
-                    menu: (provided) => ({
-                      ...provided,
-                      backgroundColor: "#ffffff", // color del menú
-                      borderRadius: "1rem",
-                      width: "10rem",
-                      textAlign: "left",
-                      padding: "0.5rem",
-                      left: "-75px",
-                      boxShadow: "0 0 10px rgba(0,0,0,0.2)",
-                    }),
-                    option: (provided, state) => ({
-                      ...provided,
-                      backgroundColor: state.isSelected
-                        ? "#ff99cc" // cuando está seleccionado
-                        : state.isFocused
-                        ? "#ffd6eb" // cuando se pasa el mouse
-                        : "#fff", // por defecto
-                      color: "#333",
-                      padding: "10px 15px",
-                      cursor: "pointer",
-                      borderRadius: "1rem",
-                    }),
-                  }}
-                  components={{
-                    Control: CustomControl,
-                    DropdownIndicator: () => null,
-                    IndicatorSeparator: () => null,
-                  }}
-                  options={options}
-                  isSearchable={false}
-                  menuPlacement="auto"
-                  value={null}
-                  onChange={(e) => handleChange(client, e)}
-                  placeholder={`${client.status ? client.status : ""}`}
-                />
-              </li>
-            );
-          })}
+                  <p>$ {client.amount}</p>
+                  <Select
+                    styles={{
+                      control: (base) => ({
+                        ...base,
+                        backgroundColor: "transparent", // ❌ elimina el fondo gris/blanco
+                        border: "none", // ❌ elimina el borde
+                      }),
+                      placeholder: (base) => ({
+                        ...base,
+                        color: "black",
+                        fontSize: "0.75rem",
+                      }),
+                      menu: (provided) => ({
+                        ...provided,
+                        backgroundColor: "#ffffff", // color del menú
+                        borderRadius: "1rem",
+                        width: "10rem",
+                        textAlign: "left",
+                        padding: "0.5rem",
+                        left: "-75px",
+                        boxShadow: "0 0 10px rgba(0,0,0,0.2)",
+                      }),
+                      option: (provided, state) => ({
+                        ...provided,
+                        backgroundColor: state.isSelected
+                          ? "#ff99cc" // cuando está seleccionado
+                          : state.isFocused
+                          ? "#ffd6eb" // cuando se pasa el mouse
+                          : "#fff", // por defecto
+                        color: "#333",
+                        padding: "10px 15px",
+                        cursor: "pointer",
+                        borderRadius: "1rem",
+                      }),
+                    }}
+                    components={{
+                      Control: CustomControl,
+                      DropdownIndicator: () => null,
+                      IndicatorSeparator: () => null,
+                    }}
+                    options={options}
+                    isSearchable={false}
+                    menuPlacement="auto"
+                    value={null}
+                    onChange={(e) => handleChange(client, e)}
+                    placeholder={`${client.status ? client.status : ""}`}
+                  />
+                </li>
+              );
+            })
+          ) : (
+            <p className="not-results-text">No hay clientes </p>
+          )}
         </ul>
         <div className="client-button-back-container">
           <button className="client-button-back" onClick={() => navigate("/")}>
