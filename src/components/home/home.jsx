@@ -6,8 +6,7 @@ import "./homeStyle.css";
 import { NavBar } from "../navbar/navBar";
 import { clientsContext } from "../../contexts/clientsContext";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUsers } from "@fortawesome/free-solid-svg-icons";
+import { NavigateButtons } from "../navigate-buttons/navigateButtons";
 
 export const HomePage = () => {
   const [amountTotal, setAmountTotal] = useState(0);
@@ -26,8 +25,6 @@ export const HomePage = () => {
   return (
     <div className="home-page-container">
       <div className="top-contain">
-        <NavBar />
-
         <div className="stats-container">
           <div className="stats-item">
             <label htmlFor="">Ganancias:</label>
@@ -42,17 +39,6 @@ export const HomePage = () => {
           <label>Total ventas:</label>
           <h3>${amountTotal}</h3>
         </div>
-      </div>
-      <div className="buttons-container">
-        <button
-          onClick={() => navigate("/clients")}
-          className="button-navigate button-active "
-        >
-          <FontAwesomeIcon icon={faUsers} />
-        </button>
-        <div className="button-navigate"></div>
-        <div className="button-navigate"></div>
-        <div className="button-navigate"></div>
       </div>
     </div>
   );

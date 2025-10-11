@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ClientProvider } from "./contexts/clientsContext";
+import { pageContext, PageProvider } from "./contexts/pageContext.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <PageProvider>
+      <App />
+    </PageProvider>
   </React.StrictMode>
 );
 

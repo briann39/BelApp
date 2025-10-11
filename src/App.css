@@ -7,10 +7,20 @@
   width: 100%;
   height: 100dvh;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #001220;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.app-body-container {
+  width: 100%;
+  padding: 1rem 0;
+  flex: 1;
 }
 
 :root {

@@ -10,6 +10,7 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons"; */
 
 import "./clientsStyle.css";
 import { NavBar } from "../navbar/navBar";
+import { NavigateButtons } from "../navigate-buttons/navigateButtons";
 export const ClientsPage = () => {
   const navigate = useNavigate();
 
@@ -258,21 +259,6 @@ export const ClientsPage = () => {
             )}
           </motion.ul>
         </AnimatePresence>
-        <div className="client-button-back-container">
-          <AnimatePresence>
-            <motion.button
-              key={"client-button-back"}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 10 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="client-button-back"
-              onClick={() => navigate("/")}
-            >
-              Volver
-            </motion.button>
-          </AnimatePresence>
-        </div>
       </div>
     </div>
   );
